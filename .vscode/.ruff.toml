@@ -1,0 +1,9 @@
+line-length = 88
+[pycodestyle]
+max-line-length = 100 # E501 reports lines that exceed the length of 100.
+[format]
+indent-style="tab"
+line-ending = "lf"
+quote-style = "double"
+[lint.pylint]
+max-args = 5

@@ -1,0 +1,14 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/*.pyo": true
+    },
+	"todo-tree.tree.showCountsInTree": true,
+	"ruff.format.args": [
+		"--config=.vscode/.ruff.toml"
+	],
+	"python.analysis.typeCheckingMode": "off",
+	"ruff.lint.run": "onType",
+	"ruff.showNotifications": "onError",
+}

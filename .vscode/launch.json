@@ -1,0 +1,35 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Python: текущий файл",
+			"type": "python",
+			"request": "launch",
+			"program": "${file}",
+			"console": "integratedTerminal",
+			"justMyCode": true
+		},
+		{
+			"name": "Run main file",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceFolder}/main.py",
+			"justMyCode": false
+		},
+		{
+			"name": "Docker: Python - General",
+			"type": "docker",
+			"request": "launch",
+			"preLaunchTask": "docker-run: debug",
+			"python": {
+				"pathMappings": [
+				{
+					"localRoot": "${workspaceFolder}",
+					"remoteRoot": "/app"
+				}
+				],
+			"projectType": "general"
+			}
+		},
+	]
+}
