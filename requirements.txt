@@ -1,3 +1,5 @@
 requests
 flask
 ruff
+pytest
+pytest-mock
