@@ -1,4 +1,4 @@
-def mfunc():
+def born_day_quiz():
 	year = int(input("input enter Pushkin's year of birth "))
 	if year == 1799:
 		print("verno")
@@ -9,5 +9,5 @@ def mfunc():
 	check = input("Выйти? ")
 	if check == "да":
 		return
-	mfunc()
-mfunc()
+	born_day_quiz()
+# mfunc()

@@ -33,35 +33,67 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
-balance:float = 0
+balance: float = 0
 list_of_purchase = []
 
-while True:
-    print('1. пополнение счета')
-    print('2. покупка')
-    print('3. история покупок')
-    print('4. выход')
+# while True:
+# 	print("1. пополнение счета")
+# 	print("2. покупка")
+# 	print("3. история покупок")
+# 	print("4. выход")
 
-    choice = input('Выберите пункт меню ')
-    if choice == '1':
-        new_balance = float(input("Введите сумму для пополнения "))
-        balance+=new_balance
-        print(f"Баланс пополнен на {new_balance} текущий баланс {balance}")
-        pass
-    elif choice == '2':
-        name_of_product = input("Что хотите купить? ")
-        sum = float(input("На какую сумму? ")) 
-        if balance<sum:
-            print('Не хватает денег на покупку')
-            continue
-        print(f"Куплено:{name_of_product}\nСумма:{sum}")
-        list_of_purchase.append({"name":name_of_product,"sum":sum})
-        pass
-    elif choice == '3':
-        for log in list_of_purchase:
-            print(f"Товар:{log['name']}; Сумма {log['sum']}\n")
-        pass
-    elif choice == '4':
-        break
-    else:
-        print('Неверный пункт меню')
+# 	choice = input("Выберите пункт меню ")
+# 	if choice == "1":
+# 		new_balance = float(input("Введите сумму для пополнения "))
+# 		balance += new_balance
+# 		print(f"Баланс пополнен на {new_balance} текущий баланс {balance}")
+# 		pass
+# 	elif choice == "2":
+# 		name_of_product = input("Что хотите купить? ")
+# 		sum = float(input("На какую сумму? "))
+# 		if balance < sum:
+# 			print("Не хватает денег на покупку")
+# 			continue
+# 		print(f"Куплено:{name_of_product}\nСумма:{sum}")
+# 		list_of_purchase.append({"name": name_of_product, "sum": sum})
+# 		pass
+# 	elif choice == "3":
+# 		for log in list_of_purchase:
+# 			print(f"Товар:{log['name']}; Сумма {log['sum']}\n")
+# 		pass
+# 	elif choice == "4":
+# 		break
+# 	else:
+# 		print("Неверный пункт меню")
+
+
+def bank():
+	print('1. пополнение счета')
+	print('2. покупка')
+	print('3. история покупок')
+	print('4. выход')
+	global balance
+	choice = input('Выберите пункт меню ')
+	if choice == '1':
+		new_balance = float(input("Введите сумму для пополнения "))
+		balance+=new_balance
+		print(f"Баланс пополнен на {new_balance} текущий баланс {balance}")
+		pass
+	elif choice == '2':
+		name_of_product = input("Что хотите купить? ")
+		sum = float(input("На какую сумму? ")) 
+		if balance<sum:
+			print('Не хватает денег на покупку')
+			
+		print(f"Куплено:{name_of_product}\nСумма:{sum}")
+		list_of_purchase.append({"name":name_of_product,"sum":sum})
+		pass
+	elif choice == '3':
+		for log in list_of_purchase:
+			print(f"Товар:{log['name']}; Сумма {log['sum']}\n")
+		pass
+	elif choice == '4':
+		return
+	else:
+		print('Неверный пункт меню')
+	bank()
