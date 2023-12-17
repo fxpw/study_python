@@ -44,7 +44,7 @@ def list_files():
 
 
 def view_os_info():
-	print('My OS is', sys.platform, '(', os.name, ')')
+	print("My OS is", sys.platform, "(", os.name, ")")
 	pass
 
 
