@@ -1,8 +1,30 @@
 import os
 import sys
 import shutil
-from lesson4.use_functions import bank
+from lesson4.bank import bank
 from lesson4.borndayforewer import born_day_quiz
+
+
+def decorator_func(func):
+	def new_func():
+		print("*" * 10)
+		func()
+		print("*" * 10)
+
+	return new_func
+
+
+def trace(func):
+	def wrapper(*args, **kwargs):
+		print(f"TRACE: calling {func.__name__}() " f"with {args}, {kwargs}")
+
+		original_result = func(*args, **kwargs)
+
+		print(f"TRACE: {func.__name__}() " f"returned {original_result!r}")
+
+		return original_result
+
+	return wrapper
 
 
 def create_folder():
@@ -27,33 +49,39 @@ def copy_file_or_folder():
 		shutil.copy(name, new_name)
 
 
+@decorator_func
+@trace
 def list_directory():
 	print(os.listdir("."))
 
 
 def list_folders():
-	list_of_folders = []
-	for item in os.listdir("."):
-		if os.path.isdir(item):
-			list_of_folders.append(item)
-			print(item)
+	# list_of_folders = []
+	# for item in os.listdir("."):
+	# 	if os.path.isdir(item):
+	# 		list_of_folders.append(item)
+	# 		print(item)
+	list_of_folders = [item for item in os.listdir(".") if os.path.isdir(item)]
 	return list_of_folders
 
 
 def list_files():
-	list_of_files =[]
-	for item in os.listdir("."):
-		if os.path.isfile(item):
-			list_of_files.append(item)
-			print(item)
+	# list_of_files =[]
+	# for item in os.listdir("."):
+	# 	if os.path.isfile(item):
+	# 		list_of_files.append(item)
+	# 		print(item)
+	list_of_files = [item for item in os.listdir(".") if os.path.isfile(item)]
 	return list_of_files
 
 
+@decorator_func
 def view_os_info():
 	print("My OS is", sys.platform, "(", os.name, ")")
 	pass
 
 
+@decorator_func
 def about_creator():
 	print("Информация о создателе программы.")
 	print("Name : fxpw")
@@ -72,17 +100,22 @@ def change_directory():
 	path = input("Введите путь: ")
 	os.chdir(path)
 
+
 def save_directiry():
 	list_files_list = list_files()
-	list_folders_list  = list_folders()
-	if not os.path.exists("listdir.txt"):
+	list_folders_list = list_folders()
+	try:
+		if not os.path.exists("listdir.txt"):
+			with open("listdir.txt", "w") as file:
+				file.write(f"files {", ".join(list_files_list)}\n")
+				file.write(f"dirs {", ".join(list_folders_list)}\n")
+				return
 		with open("listdir.txt", "w") as file:
 			file.write(f"files {", ".join(list_files_list)}\n")
 			file.write(f"dirs {", ".join(list_folders_list)}\n")
-			return
-	with open("listdir.txt", "w") as file:
-		file.write(f"files {", ".join(list_files_list)}\n")
-		file.write(f"dirs {", ".join(list_folders_list)}\n")
+	except Exception as e:
+		pass
+
 
 def exit_program():
 	sys.exit()

@@ -85,10 +85,13 @@ def bank():
 			balance = float(file.read())
 		new_balance = float(input("Введите сумму для пополнения "))
 		balance += new_balance
-		with open("balance.txt", "w") as file:
-			file.write(str(balance))
-		print(f"Баланс пополнен на {new_balance} текущий баланс {balance}")
-		pass
+		try:
+			with open("balance.txt", "w") as file:
+				file.write(str(balance))
+		except Exception as e:
+			pass
+		finally:
+			print(f"Баланс пополнен на {new_balance} текущий баланс {balance}")
 	elif choice == "2":
 		balance = 0
 		with open("balance.txt", "r") as file:
