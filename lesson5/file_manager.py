@@ -32,15 +32,21 @@ def list_directory():
 
 
 def list_folders():
+	list_of_folders = []
 	for item in os.listdir("."):
 		if os.path.isdir(item):
+			list_of_folders.append(item)
 			print(item)
+	return list_of_folders
 
 
 def list_files():
+	list_of_files =[]
 	for item in os.listdir("."):
 		if os.path.isfile(item):
+			list_of_files.append(item)
 			print(item)
+	return list_of_files
 
 
 def view_os_info():
@@ -66,6 +72,17 @@ def change_directory():
 	path = input("Введите путь: ")
 	os.chdir(path)
 
+def save_directiry():
+	list_files_list = list_files()
+	list_folders_list  = list_folders()
+	if not os.path.exists("listdir.txt"):
+		with open("listdir.txt", "w") as file:
+			file.write(f"files {", ".join(list_files_list)}\n")
+			file.write(f"dirs {", ".join(list_folders_list)}\n")
+			return
+	with open("listdir.txt", "w") as file:
+		file.write(f"files {", ".join(list_files_list)}\n")
+		file.write(f"dirs {", ".join(list_folders_list)}\n")
 
 def exit_program():
 	sys.exit()
@@ -85,7 +102,8 @@ def main_menu():
 		print("9 - Играть в викторину")
 		print("10 - Мой банковский счет")
 		print("11 - Смена рабочей директории")
-		print("12 - Выход")
+		print("12 - Сохранение содержимого в файл")
+		print("13 - Выход")
 
 		choice = input("Выберите пункт: ")
 
@@ -112,6 +130,8 @@ def main_menu():
 		elif choice == "11":
 			change_directory()
 		elif choice == "12":
+			save_directiry()
+		elif choice == "13":
 			exit_program()
 		else:
 			print("Неверный выбор, попробуйте снова.")

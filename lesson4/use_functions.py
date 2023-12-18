@@ -1,3 +1,5 @@
+import os
+
 """
 МОДУЛЬ 3
 Программа "Личный счет"
@@ -68,32 +70,60 @@ list_of_purchase = []
 
 
 def bank():
-	print('1. пополнение счета')
-	print('2. покупка')
-	print('3. история покупок')
-	print('4. выход')
-	global balance
-	choice = input('Выберите пункт меню ')
-	if choice == '1':
+	print("1. пополнение счета")
+	print("2. покупка")
+	print("3. история покупок")
+	print("4. выход")
+	# global balance
+	choice = input("Выберите пункт меню ")
+	if choice == "1":
+		balance = 0.0
+		if not os.path.exists("balance.txt"):
+			with open("balance.txt", "w") as file:
+				file.write("0")
+		with open("balance.txt", "r") as file:
+			balance = float(file.read())
 		new_balance = float(input("Введите сумму для пополнения "))
-		balance+=new_balance
+		balance += new_balance
+		with open("balance.txt", "w") as file:
+			file.write(str(balance))
 		print(f"Баланс пополнен на {new_balance} текущий баланс {balance}")
 		pass
-	elif choice == '2':
+	elif choice == "2":
+		balance = 0
+		with open("balance.txt", "r") as file:
+			balance = float(file.read())
 		name_of_product = input("Что хотите купить? ")
-		sum = float(input("На какую сумму? ")) 
-		if balance<sum:
-			print('Не хватает денег на покупку')
-			
-		print(f"Куплено:{name_of_product}\nСумма:{sum}")
-		list_of_purchase.append({"name":name_of_product,"sum":sum})
-		pass
-	elif choice == '3':
-		for log in list_of_purchase:
-			print(f"Товар:{log['name']}; Сумма {log['sum']}\n")
-		pass
-	elif choice == '4':
+		sum = 0
+		try:
+			sum = float(input("На какую сумму? "))
+		except Exception as e:
+			sum = -1
+		if sum>0:
+			if balance < sum:
+				print("Не хватает денег на покупку")
+			else:
+				print(f"Куплено:{name_of_product}\nСумма:{sum}")
+				if not os.path.exists("purchases.txt"):
+					with open("purchases.txt", "w") as file:
+						file.write(f"{name_of_product}:{sum}\n")
+				else:
+					with open("purchases.txt", "w") as file:
+						file.write(f"{name_of_product}:{sum}\n")
+				balance = balance - sum
+				with open("balance.txt", "w") as file:
+					file.write(str(balance))
+	elif choice == "3":
+		if not os.path.exists("purchases.txt"):
+			print("покупок еще не было")
+		else:
+			with open("purchases.txt", "r") as file:
+				print(file.read())
+		# for log in list_of_purchase:
+		# 	print(f"Товар:{log['name']}; Сумма {log['sum']}\n")
+		# pass
+	elif choice == "4":
 		return
 	else:
-		print('Неверный пункт меню')
+		print("Неверный пункт меню")
 	bank()
