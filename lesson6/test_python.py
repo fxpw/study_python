@@ -1,5 +1,5 @@
 import math
-import pytest
+# import pytest
 from lesson5.file_manager import create_folder, delete_file_or_folder, list_directory
 
 

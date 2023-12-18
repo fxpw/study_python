@@ -114,6 +114,7 @@ def save_directiry():
 			file.write(f"files {", ".join(list_files_list)}\n")
 			file.write(f"dirs {", ".join(list_folders_list)}\n")
 	except Exception as e:
+		print(str(e))
 		pass
 
 
