@@ -3,3 +3,4 @@ flask
 ruff
 pytest
 pytest-mock
+pytest-cov

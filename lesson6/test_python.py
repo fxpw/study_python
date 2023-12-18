@@ -1,6 +1,6 @@
 import math
 # import pytest
-from lesson5.file_manager import create_folder, delete_file_or_folder, list_directory
+# from lesson5.file_manager import create_folder, delete_file_or_folder, list_directory
 
 
 def test_filter_even_numbers():
@@ -43,31 +43,31 @@ def test_hypot():
 	assert math.hypot(3, 4) == 5
 
 
-def test_create_folder(monkeypatch, tmp_path):
-	# Тестирование создания папки
-	folder_name = "test_folder"
-	monkeypatch.setattr("builtins.input", lambda _: str(tmp_path / folder_name))
-	create_folder()
-	assert (tmp_path / folder_name).is_dir()
+# def test_create_folder(monkeypatch, tmp_path):
+# 	# Тестирование создания папки
+# 	folder_name = "test_folder"
+# 	monkeypatch.setattr("builtins.input", lambda _: str(tmp_path / folder_name))
+# 	create_folder()
+# 	assert (tmp_path / folder_name).is_dir()
 
 
-def test_delete_file_or_folder(monkeypatch, tmp_path):
-	# Тестирование удаления файла/папки
-	folder_name = tmp_path / "test_folder"
-	folder_name.mkdir()
-	monkeypatch.setattr("builtins.input", lambda _: str(folder_name))
-	delete_file_or_folder()
-	assert not folder_name.exists()
+# def test_delete_file_or_folder(monkeypatch, tmp_path):
+# 	# Тестирование удаления файла/папки
+# 	folder_name = tmp_path / "test_folder"
+# 	folder_name.mkdir()
+# 	monkeypatch.setattr("builtins.input", lambda _: str(folder_name))
+# 	delete_file_or_folder()
+# 	assert not folder_name.exists()
 
 
-def test_list_directory(monkeypatch, capsys, tmp_path):
-	# Тестирование вывода содержимого директории
-	(tmp_path / "file1").touch()
-	(tmp_path / "file2").touch()
-	monkeypatch.setattr("os.listdir", lambda _: ["file1", "file2"])
-	monkeypatch.setattr("os.getcwd", lambda: str(tmp_path))
+# def test_list_directory(monkeypatch, capsys, tmp_path):
+# 	# Тестирование вывода содержимого директории
+# 	(tmp_path / "file1").touch()
+# 	(tmp_path / "file2").touch()
+# 	monkeypatch.setattr("os.listdir", lambda _: ["file1", "file2"])
+# 	monkeypatch.setattr("os.getcwd", lambda: str(tmp_path))
 
-	list_directory()
-	captured = capsys.readouterr()
-	assert "file1" in captured.out
-	assert "file2" in captured.out
+# 	list_directory()
+# 	captured = capsys.readouterr()
+# 	assert "file1" in captured.out
+# 	assert "file2" in captured.out

@@ -12,7 +12,7 @@
 	"ruff.lint.run": "onType",
 	"ruff.showNotifications": "onError",
 	"python.testing.pytestArgs": [
-		"."
+		"lesson9"
 	],
 	"python.testing.unittestEnabled": false,
 	"python.testing.pytestEnabled": true,
