@@ -1,5 +1,5 @@
 # from lesson5.file_manager import main_menu
-# from lesson9.loto import LotoGame
+# from lesson11.loto import LotoGame
 
 
 # if __name__ == "__main__":
