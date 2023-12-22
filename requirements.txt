@@ -4,3 +4,7 @@ ruff
 pytest
 pytest-mock
 pytest-cov
+bs4
+fake_useragent
+Pillow
+pandas
