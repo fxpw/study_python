@@ -8,9 +8,8 @@ ccache:
 	find . -type f -name "*.pyo" -exec rm -f {} +
 # cfiles:
 # 	rm -r ./files
-installr:
+r:
 	./.venv/bin/pip3.12 install -r requirements.txt
 venv:
+	pip install venv
 	python3.12 -m venv .venv
-	. ./.venv/bin/activate && pip install -r requirements.txt
-

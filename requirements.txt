@@ -8,3 +8,5 @@ bs4
 fake_useragent
 Pillow
 pandas
+aiogram
+python-dotenv
