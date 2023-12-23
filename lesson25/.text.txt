@@ -1,0 +1,11 @@
+
+Запросы в django orm
+Python
+Python-разработчик
+Описание занятия
+
+ 
+
+Код с занятия: https://github.com/DanteOnline/nu-django-blog/tree/nu25extend-query
+Запросы: https://docs.djangoproject.com/en/3.0/ref/models/querysets/
+Админка: https://docs.djangoproject.com/en/3.0/ref/contrib/admin/actions/
