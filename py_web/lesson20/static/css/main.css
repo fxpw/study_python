@@ -1,0 +1,12 @@
+.proverb {
+    color: aqua;
+    background-color: brown;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.maintext {
+    color: red;
+}
+body {
+    background-color: yellow;
+}

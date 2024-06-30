@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Поиск {% endblock %}
+
+{% block head %}Форма для поиска{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static '/assets/img/640915.jpg' %}" alt="...">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <form action="{% url 'hh:result' %}" method="post">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" value="Искать вакансию" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}Работа не волк, да прибудет с вами сила{% endblock%}

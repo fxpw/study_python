@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Поиск</title>
+        <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+         <header>
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                <span class="site-heading-upper text-primary mb-3">Форма для поиска</span>
+            </h1>
+        </header>
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index">Start Bootstrap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/index">Главная</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/form">Поиск</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <section class="page-section clearfix">
+            <div class="container">
+                <div class="intro">
+                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/static/assets/img/640915.jpg" alt="...">
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                        <form action="/result" method="post">
+                            <div class="form-group">
+                                <label for="vacancy">Текст поиска:</label>
+                                <input type="text" name="vacancy" placeholder="Строка поиска" class="form-control" id="vacancy">
+                                <label for="wh">Где искать:</label>
+                                <select name="where" class="form-control" id="wh">
+                                    <option value="all">Везде</option>
+                                    <option value="company">В названии компании</option>
+                                    <option selected value="name">В названии вакансии</option>
+                                </select>
+                                <label for="p">Количество анализируемых страниц</label>
+                                <input type="number" name="pages" value="3" class="form-control" id="p">
+                                <input type="submit" value="Искать вакансию" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer text-faded text-center py-5">
+            <div class="container">
+                <p class="m-0 small">Работа не волк, да прибудет с вами сила</p>
+            </div>
+        </footer>
+    </body>
+</html>

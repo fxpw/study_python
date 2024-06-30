@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Результаты запроса{% endblock %}
+
+{% block head %}Результаты{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'assets/img/about.jpg' %}" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-15 col-lg-6 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                Результаты запроса
+                            </h2>
+                            <h3 class="section-heading">Параметры</h3>
+                                <ol class="list-group">
+                                    <li class="list-group-item" >Вакансия: {{ word.word }}</li>
+                                    <li class="list-group-item">Ср. верхняя граница: {{ word.up }}руб.</li>
+                                    <li class="list-group-item">Ср. нижняя граница: {{ word.down }}руб.</li>
+                                </ol>
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Номер</th>
+                                            <th scope="col">Название</th>
+                                            <th scope="col">Процент упоминаний</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in skills %}
+                                            <tr>
+                                                <th scope="row">{{ forloop.counter }} </th>
+                                                <td>{{ item.id_skill.name }}</td>
+                                                <td align="right">{{ item.percent }}%</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                        <div class="col-xl-15 col-lg-10 mx-auto">
+                            <div class="bg-faded rounded p-5">
+                                {% for item in vac %}
+                                    <div>
+                                        <p>Дата публикации: {{ item.published }}</p>
+                                        <p>Название: {{ item.name}}</p>
+                                        <a href="{{ item.url }}">Ссылка</a>
+                                        <p>Текст запроса: {{ item.word_id.word }}</p>
+                                        <p>Регион: {{ item.area.name}}</p>
+                                        <p>Занятость: {{ item.schedule.name }}</p>
+                                        <p>Описание: {{ item.snippet|safe }}</p>
+                                        <p>Нижняя граница: {{ item.salaryFrom }}</p>
+                                        <p>Верхняя граница: {{ item.salaryTo }}</p>
+                                        <p>Работодатель: {{ item.employer.name }}</p>
+                                        <img src="{{ item.employer.link }}" alt="Upsss..." width="200" hight="300">
+                                        <hr>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}Любишь кататься - люби и саночки возить{% endblock %}
+
