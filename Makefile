@@ -11,5 +11,4 @@ ccache:
 r:
 	./.venv/bin/pip3.12 install -r requirements.txt
 venv:
-	pip install venv
 	python3.12 -m venv .venv

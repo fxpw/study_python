@@ -10,3 +10,4 @@ Pillow
 pandas
 aiogram
 python-dotenv
+tensorflow
